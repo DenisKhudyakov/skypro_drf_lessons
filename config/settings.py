@@ -139,6 +139,6 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-AUTH_USER_MODEL = "users.User"
+# AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "/"  # URL to redirect to after login
 LOGOUT_REDIRECT_URL = "/"  # URL to redirect to after logout
