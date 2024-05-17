@@ -6,6 +6,7 @@ from online_school.serializers import CourseSerializer, LessonSerializer
 
 class CourseViewSet(viewsets.ModelViewSet):
     """ViewSet for the Course model"""
+
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
 

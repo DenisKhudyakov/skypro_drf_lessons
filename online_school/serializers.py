@@ -6,10 +6,15 @@ from online_school.models import Course, Lesson
 class CourseSerializer(serializers.ModelSerializer):
     """Serializer for the Course model"""
 
+    count_lessons = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = "__all__"
+
+    @staticmethod
+    def get_count_lessons(obj):
+        return Lesson.objects.filter(course=obj).count()
 
 
 class LessonSerializer(serializers.ModelSerializer):
@@ -17,4 +22,4 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = '__all__'
+        fields = "__all__"
