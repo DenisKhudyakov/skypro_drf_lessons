@@ -15,6 +15,9 @@ class User(AbstractUser):
     city = models.CharField(max_length=50, verbose_name="Город")
     avatar = models.ImageField(upload_to="avatars/", null=True, blank=True)
 
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"

@@ -9,7 +9,7 @@ from online_school.views import (
     LessonDetailAPIViewSet,
     LessonDeleteAPIViewSet,
     LessonUpdateAPIViewSet,
-    CourseViewSet,
+    CourseViewSet, CourseCreateAPIViewSet,
 )
 
 app_name = OnlineSchoolConfig.name
@@ -30,4 +30,5 @@ urlpatterns = [
         LessonUpdateAPIViewSet.as_view(),
         name="lesson-update",
     ),
+    path('course/create/', CourseCreateAPIViewSet.as_view(), name='course-create'),
 ] + router.urls
