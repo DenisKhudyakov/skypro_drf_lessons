@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # settings apps:
+    "django_filters",
     "rest_framework",
+    # my apps:
     "online_school",
     "users",
 ]
@@ -140,3 +143,9 @@ EMAIL_USE_SSL = True
 AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "/"  # URL to redirect to after login
 LOGOUT_REDIRECT_URL = "/"  # URL to redirect to after logout
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}

@@ -1,0 +1,79 @@
+[
+{
+    "model": "online_school.lesson",
+    "pk": 1,
+    "fields": {
+        "name": "Электротехника",
+        "description": "Базовые знания в электротехнике",
+        "preview_image": "",
+        "course": 4,
+        "video_link": null
+    }
+},
+{
+    "model": "online_school.lesson",
+    "pk": 2,
+    "fields": {
+        "name": "История журналистики",
+        "description": "Как развивлась журналистика в ХХ веке",
+        "preview_image": "",
+        "course": 5,
+        "video_link": null
+    }
+},
+{
+    "model": "online_school.lesson",
+    "pk": 3,
+    "fields": {
+        "name": "урок1",
+        "description": null,
+        "preview_image": "",
+        "course": 7,
+        "video_link": null
+    }
+},
+{
+    "model": "online_school.lesson",
+    "pk": 4,
+    "fields": {
+        "name": "урок2",
+        "description": null,
+        "preview_image": "",
+        "course": 7,
+        "video_link": null
+    }
+},
+{
+    "model": "online_school.lesson",
+    "pk": 5,
+    "fields": {
+        "name": "урок3",
+        "description": null,
+        "preview_image": "",
+        "course": 7,
+        "video_link": null
+    }
+},
+{
+    "model": "online_school.lesson",
+    "pk": 6,
+    "fields": {
+        "name": "Lessons1",
+        "description": null,
+        "preview_image": "",
+        "course": 16,
+        "video_link": null
+    }
+},
+{
+    "model": "online_school.lesson",
+    "pk": 7,
+    "fields": {
+        "name": "lessons2",
+        "description": null,
+        "preview_image": "",
+        "course": 16,
+        "video_link": null
+    }
+}
+]

@@ -1,0 +1,83 @@
+[
+{
+    "model": "online_school.course",
+    "pk": 4,
+    "fields": {
+        "title": "Энергетический курс",
+        "description": "Курс для инженеров энергетиков",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 5,
+    "fields": {
+        "title": "Журналистика",
+        "description": "Курс для тех, кто хочет заниматься журналистикой",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 6,
+    "fields": {
+        "title": "Какой-то ещё курс",
+        "description": "Описание какого-то курса",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 7,
+    "fields": {
+        "title": "Курс4",
+        "description": "Any text",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 12,
+    "fields": {
+        "title": "Курс5",
+        "description": "Any text, double",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 13,
+    "fields": {
+        "title": "Курс5",
+        "description": "Any text, double",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 14,
+    "fields": {
+        "title": "Курс5",
+        "description": "Any text, double",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 15,
+    "fields": {
+        "title": "Курс5",
+        "description": "Any text, double",
+        "preview_image": ""
+    }
+},
+{
+    "model": "online_school.course",
+    "pk": 16,
+    "fields": {
+        "title": "Курс5",
+        "description": "Any text, double",
+        "preview_image": ""
+    }
+}
+]
