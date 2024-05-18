@@ -15,7 +15,8 @@ class CourseSerializer(serializers.ModelSerializer):
     """Serializer for the Course model"""
 
     count_lessons = serializers.SerializerMethodField()
-    lessons = LessonSerializer(read_only=True, many=True, source="lesson_set")
+    lessons = LessonSerializer(many=True)
+    read_only = True
 
     class Meta:
         model = Course
@@ -25,6 +26,11 @@ class CourseSerializer(serializers.ModelSerializer):
     def get_count_lessons(obj):
         return Lesson.objects.filter(course=obj).count()
 
-
-
+    def create(self, validated_data):
+        """Явный метод для создания объекта"""
+        lessons = validated_data.pop('lessons')
+        course = Course.objects.create(**validated_data)
+        for lesson in lessons:
+            Lesson.objects.create(course=course, **lesson)
+        return course
 

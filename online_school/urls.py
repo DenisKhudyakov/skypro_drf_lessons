@@ -18,7 +18,7 @@ router = routers.DefaultRouter()
 router.register(r"course", CourseViewSet, basename="course")
 urlpatterns = [
     path("lessons/create/", LessonCreateAPIViewSet.as_view(), name="lesson-create"),
-    path("lessons/list/", LessonListAPIViewSet.as_view(), name="lesson-list"),
+    path("lessons/list/", LessonListAPIViewSet.as_view(), name="lessons"),
     path("lessons/<int:pk>/", LessonDetailAPIViewSet.as_view(), name="lesson-detail"),
     path(
         "lessons/<int:pk>/delete/",
