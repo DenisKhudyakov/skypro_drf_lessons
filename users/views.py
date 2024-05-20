@@ -1,10 +1,12 @@
 from django_filters.rest_framework.backends import DjangoFilterBackend
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView
 from rest_framework.filters import OrderingFilter
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.generics import (
+    CreateAPIView,
+    DestroyAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+)
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 from users.models import Payments, User
 from users.serializers import PaymentsSerializer, UserSerializer
@@ -29,19 +31,22 @@ class PaymentsListAPIView(ListAPIView):
 
 class UserListAPIView(ListAPIView):
     """Контроллер списка пользователей"""
+
     serializer_class = UserSerializer
-    queryset = User.objects.all() # Список пользователей
+    queryset = User.objects.all()  # Список пользователей
     permission_classes = [IsAuthenticated]
 
 
 class UserDetailAPIView(RetrieveAPIView):
     """Контроллер пользователя"""
+
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
 
 class UserCreateAPIView(CreateAPIView):
     """Контроллер создания пользователя"""
+
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
@@ -51,10 +56,11 @@ class UserCreateAPIView(CreateAPIView):
         new_user.save()
 
 
-class UserDestroyAPIView(DestroyAPIView): # Деструктор
+class UserDestroyAPIView(DestroyAPIView):  # Деструктор
     """Класс для удаления пользователя"""
+
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated & IsAdminUser] # Доступ только для админов
+    permission_classes = [IsAuthenticated & IsAdminUser]  # Доступ только для админов
 
 
 # Ниже просто примеры кода

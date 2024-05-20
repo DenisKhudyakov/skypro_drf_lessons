@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from online_school.models import Course, Lesson, NULLABLE
+from online_school.models import NULLABLE, Course, Lesson
 
 
 class User(AbstractUser):

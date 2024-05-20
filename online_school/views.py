@@ -1,4 +1,4 @@
-from rest_framework import viewsets, generics
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from online_school.models import Course, Lesson
@@ -43,4 +43,4 @@ class CourseCreateAPIViewSet(generics.CreateAPIView):
 class CourseUpdateAPIViewSet(generics.RetrieveUpdateAPIView):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
-    permission_classes = [IsOwnerOrStaff] # TODO IsOwnerOrStaff
+    permission_classes = [IsOwnerOrStaff]  # TODO IsOwnerOrStaff

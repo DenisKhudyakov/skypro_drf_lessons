@@ -1,16 +1,16 @@
 from django.urls import path
-
-from online_school.apps import OnlineSchoolConfig
 from rest_framework import routers
 
+from online_school.apps import OnlineSchoolConfig
 from online_school.views import (
-    LessonCreateAPIViewSet,
-    LessonListAPIViewSet,
-    LessonDetailAPIViewSet,
-    LessonDeleteAPIViewSet,
-    LessonUpdateAPIViewSet,
+    CourseCreateAPIViewSet,
+    CourseUpdateAPIViewSet,
     CourseViewSet,
-    CourseCreateAPIViewSet, CourseUpdateAPIViewSet,
+    LessonCreateAPIViewSet,
+    LessonDeleteAPIViewSet,
+    LessonDetailAPIViewSet,
+    LessonListAPIViewSet,
+    LessonUpdateAPIViewSet,
 )
 
 app_name = OnlineSchoolConfig.name
@@ -32,5 +32,9 @@ urlpatterns = [
         name="lesson-update",
     ),
     path("course/create/", CourseCreateAPIViewSet.as_view(), name="course-create"),
-    path('course/update/<int:pk>/', CourseUpdateAPIViewSet.as_view(), name='course-update'),
+    path(
+        "course/update/<int:pk>/",
+        CourseUpdateAPIViewSet.as_view(),
+        name="course-update",
+    ),
 ] + router.urls

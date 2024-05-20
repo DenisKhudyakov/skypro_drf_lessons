@@ -3,6 +3,7 @@ from rest_framework.permissions import BasePermission
 
 class IsOwnerOrStaff(BasePermission):
     """Custom permission to only allow owners of an object to edit it"""
+
     def has_permission(self, request, view):
         if request.user.is_staff:
             return True

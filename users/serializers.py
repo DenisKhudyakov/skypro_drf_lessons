@@ -14,10 +14,10 @@ class PaymentsSerializer(serializers.Serializer):
 
 class UserSerializer(serializers.ModelSerializer):
     """Класс сериализатора для модели User"""
+
     class Meta:
         model = User
         fields = "__all__"
-
 
 
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
