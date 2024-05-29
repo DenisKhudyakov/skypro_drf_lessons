@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
-from online_school.models import Course, Lesson
+from online_school.models import Course, Lesson, Payments, Subscription
+
+from online_school.validators import LessonsValidator
 
 
 class LessonSerializer(serializers.ModelSerializer):
@@ -9,6 +11,7 @@ class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
         fields = "__all__"
+        validators = [LessonsValidator(url="video_link")]
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -38,3 +41,19 @@ class CourseSerializer(serializers.ModelSerializer):
         for lesson in lessons:
             Lesson.objects.create(course=course, **lesson)
         return course
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    """Класс сериализатора для модели Subscription"""
+
+    class Meta:
+        model = Subscription
+        fields = "__all__"
+
+
+class PaymentsSerializer(serializers.Serializer):
+    """Класс сериализатора для модели Payments"""
+
+    class Meta:
+        model = Payments
+        fields = "__all__"

@@ -10,7 +10,7 @@ from online_school.views import (
     LessonDeleteAPIViewSet,
     LessonDetailAPIViewSet,
     LessonListAPIViewSet,
-    LessonUpdateAPIViewSet,
+    LessonUpdateAPIViewSet, SubscriptionCreateAPIView, PaymentsListAPIView,
 )
 
 app_name = OnlineSchoolConfig.name
@@ -37,4 +37,7 @@ urlpatterns = [
         CourseUpdateAPIViewSet.as_view(),
         name="course-update",
     ),
+    path("subscriptions/", SubscriptionCreateAPIView.as_view(), name="subscriptions"),
+    path("payments/", PaymentsListAPIView.as_view(), name="payments"),
+
 ] + router.urls

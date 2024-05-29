@@ -1,5 +1,3 @@
-from django_filters.rest_framework.backends import DjangoFilterBackend
-from rest_framework.filters import OrderingFilter
 from rest_framework.generics import (
     CreateAPIView,
     DestroyAPIView,
@@ -8,25 +6,12 @@ from rest_framework.generics import (
 )
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
-from users.models import Payments, User
-from users.serializers import PaymentsSerializer, UserSerializer
+
+from users.models import User
+from users.serializers import UserSerializer
 
 
-class PaymentsListAPIView(ListAPIView):
-    """Контроллер списка платежей"""
 
-    serializer_class = PaymentsSerializer
-    queryset = Payments.objects.all()
-    filter_backends = [
-        DjangoFilterBackend,
-        OrderingFilter,
-    ]  # Бэкенд для обработки фильтра
-    filterset_fields = (
-        "paid_course",
-        "paid_lesson",
-        "payment_method",
-    )  # Набор полей для
-    ordering_fields = ("data_payment",)  # сортировки
 
 
 class UserListAPIView(ListAPIView):
@@ -63,12 +48,4 @@ class UserDestroyAPIView(DestroyAPIView):  # Деструктор
     permission_classes = [IsAuthenticated & IsAdminUser]  # Доступ только для админов
 
 
-# Ниже просто примеры кода
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer # Сериализатор для токена
-#
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def my_protected_view(request):
-#     # Ваш код представления
-#     return Response({'message': 'Авторизовано!'})
+
