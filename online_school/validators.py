@@ -1,5 +1,6 @@
-from rest_framework import serializers
 import re
+
+from rest_framework import serializers
 
 
 class LessonsValidator:
@@ -10,11 +11,11 @@ class LessonsValidator:
 
     def __call__(self, value):
         value = self.url
-        if re.search('youtube.com', value):
-            raise serializers.ValidationError('Запрещенная ссылка на видео')
+        if re.search("youtube.com", value):
+            raise serializers.ValidationError("Запрещенная ссылка на видео")
 
 
-if __name__ == '__main__':
-    url = 'https://youtube.com/watch?v=dQw4w9WgXcQ'
+if __name__ == "__main__":
+    url = "https://youtube.com/watch?v=dQw4w9WgXcQ"
     validator = LessonsValidator(url)
     validator(url)

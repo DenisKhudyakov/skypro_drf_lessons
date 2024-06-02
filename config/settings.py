@@ -156,7 +156,7 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.IsAuthenticated",
     ],
 }
 SIMPLE_JWT = {
@@ -171,3 +171,6 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
+
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PK")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SK")

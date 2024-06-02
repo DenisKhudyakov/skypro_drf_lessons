@@ -1,6 +1,6 @@
 [
 {
-    "model": "users.payments",
+    "model": "online_school.payments",
     "pk": 1,
     "fields": {
         "user": 11,
@@ -12,7 +12,7 @@
     }
 },
 {
-    "model": "users.payments",
+    "model": "online_school.payments",
     "pk": 2,
     "fields": {
         "user": 11,
@@ -24,7 +24,7 @@
     }
 },
 {
-    "model": "users.payments",
+    "model": "online_school.payments",
     "pk": 3,
     "fields": {
         "user": 11,
@@ -36,7 +36,7 @@
     }
 },
 {
-    "model": "users.payments",
+    "model": "online_school.payments",
     "pk": 4,
     "fields": {
         "user": 11,

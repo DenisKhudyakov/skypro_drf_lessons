@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from online_school.models import Course, Lesson, Payments, Subscription
-
 from online_school.validators import LessonsValidator
 
 
@@ -51,7 +50,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class PaymentsSerializer(serializers.Serializer):
+class PaymentsSerializer(serializers.ModelSerializer):
     """Класс сериализатора для модели Payments"""
 
     class Meta:
