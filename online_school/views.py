@@ -14,7 +14,7 @@ from online_school.serializers import (CourseSerializer, LessonSerializer,
                                        PaymentsSerializer,
                                        SubscriptionSerializer)
 from online_school.services import create_product_with_price, create_stripe_session
-
+from online_school.tasks import sending_mails
 
 class CourseViewSet(viewsets.ModelViewSet):
     """ViewSet for the Course model"""
@@ -82,7 +82,11 @@ class CourseUpdateAPIViewSet(generics.RetrieveUpdateAPIView):
 
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
-    permission_classes = [IsOwnerOrStaff | IsModerator]  # TODO IsOwnerOrStaff
+    permission_classes = [AllowAny]  # TODO IsOwnerOrStaff
+
+    def get_object(self):
+        print('запускаю рассылку')
+        sending_mails.delay(pk=self.kwargs['pk'])
 
 
 class SubscriptionCreateAPIView(APIView):
