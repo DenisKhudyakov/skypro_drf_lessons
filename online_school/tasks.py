@@ -1,8 +1,11 @@
+from datetime import datetime, timezone, timedelta
+
 from celery import shared_task
 from django.core.mail import send_mail
 
 from config import settings
 from online_school.models import Course, Subscription
+from users.models import User
 
 
 @shared_task
@@ -16,3 +19,15 @@ def sending_mails(pk):
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[subscribers.user.email],
     )
+
+
+@shared_task
+def deactivate_user():
+    user = User.objects.filter(is_active=True)
+    now = datetime.now(timezone.utc)
+    for user in user:
+        if user.last_login and now - user.last_login > timedelta(days=30):
+            user.is_active = False
+            user.save()
+            print(f'{user.username} is deactivated')
+

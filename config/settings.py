@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "drf_yasg",
     "corsheaders",
+    "django_celery_beat",
     # my apps:
     "online_school",
     "users",
@@ -197,4 +198,11 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379",
     }
+}
+
+CELERY_BEAT_SCHEDULE = {
+    'task-name': {
+        'task': 'online_school.tasks.deactivate_user',  # Путь к задаче
+        'schedule': timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
+    },
 }
