@@ -177,15 +177,14 @@ STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PK")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SK")
 
 
-
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://localhost:6379' # Например, Redis, который по умолчанию работает на порту 6379
+CELERY_BROKER_URL = "redis://localhost:6379"  # Например, Redis, который по умолчанию работает на порту 6379
 
 # URL-адрес брокера результатов, также Redis
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 # Часовой пояс для работы Celery
-CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TIMEZONE = TIME_ZONE
 
 # Флаг отслеживания выполнения задач
 CELERY_TASK_TRACK_STARTED = True
@@ -201,8 +200,10 @@ CACHES = {
 }
 
 CELERY_BEAT_SCHEDULE = {
-    'task-name': {
-        'task': 'online_school.tasks.deactivate_user',  # Путь к задаче
-        'schedule': timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
+    "task-name": {
+        "task": "online_school.tasks.deactivate_user",  # Путь к задаче
+        "schedule": timedelta(
+            minutes=10
+        ),  # Расписание выполнения задачи (например, каждые 10 минут)
     },
 }

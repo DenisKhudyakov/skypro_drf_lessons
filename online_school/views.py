@@ -13,8 +13,10 @@ from online_school.permissions import IsModerator, IsOwnerOrStaff
 from online_school.serializers import (CourseSerializer, LessonSerializer,
                                        PaymentsSerializer,
                                        SubscriptionSerializer)
-from online_school.services import create_product_with_price, create_stripe_session
+from online_school.services import (create_product_with_price,
+                                    create_stripe_session)
 from online_school.tasks import sending_mails
+
 
 class CourseViewSet(viewsets.ModelViewSet):
     """ViewSet for the Course model"""
@@ -85,8 +87,8 @@ class CourseUpdateAPIViewSet(generics.RetrieveUpdateAPIView):
     permission_classes = [AllowAny]  # TODO IsOwnerOrStaff
 
     def get_object(self):
-        print('запускаю рассылку')
-        sending_mails.delay(pk=self.kwargs['pk'])
+        print("запускаю рассылку")
+        sending_mails.delay(pk=self.kwargs["pk"])
 
 
 class SubscriptionCreateAPIView(APIView):
@@ -130,16 +132,20 @@ class PaymentsListAPIView(ListAPIView):
 
 class PaymentsCreateAPIView(generics.CreateAPIView):
     """Контроллер создания платежа"""
+
     serializer_class = PaymentsSerializer
     queryset = Payments.objects.all()
-    permission_classes = [AllowAny] # TODO
+    permission_classes = [AllowAny]  # TODO
 
     def perform_create(self, serializer):
         payment = serializer.save(user=self.request.user)
-        product = f'{payment.paid_course}' if payment.paid_course else f'{payment.paid_lesson}'
+        product = (
+            f"{payment.paid_course}"
+            if payment.paid_course
+            else f"{payment.paid_lesson}"
+        )
         price = create_product_with_price(name=product, unit_amount=payment.amount)
         session_id, payment_link = create_stripe_session(price)
         payment.session_id = session_id
         payment.link = payment_link
         payment.save()
-

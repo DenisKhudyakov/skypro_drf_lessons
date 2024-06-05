@@ -7,8 +7,9 @@ from online_school.views import (CourseCreateAPIViewSet,
                                  LessonCreateAPIViewSet,
                                  LessonDeleteAPIViewSet,
                                  LessonDetailAPIViewSet, LessonListAPIViewSet,
-                                 LessonUpdateAPIViewSet, PaymentsListAPIView,
-                                 SubscriptionCreateAPIView, PaymentsCreateAPIView)
+                                 LessonUpdateAPIViewSet, PaymentsCreateAPIView,
+                                 PaymentsListAPIView,
+                                 SubscriptionCreateAPIView)
 
 app_name = OnlineSchoolConfig.name
 

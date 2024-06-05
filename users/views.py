@@ -1,6 +1,6 @@
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView)
-from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 
 from users.models import User
 from users.serializers import UserSerializer
@@ -25,7 +25,7 @@ class UserCreateAPIView(CreateAPIView):
     """Контроллер создания пользователя"""
 
     serializer_class = UserSerializer
-    queryset = User.objects.all() # Создание пользователя
+    queryset = User.objects.all()  # Создание пользователя
     permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
